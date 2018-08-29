@@ -63,6 +63,10 @@ RCT_EXPORT_METHOD(callPrivateApi:(NSString *)apiName apiParam: (NSString *) para
     }
 }
 
+RCT_EXPORT_METHOD(setDebugLogsLevel: (IBGSDKDebugLogsLevel) level) {
+    Instabug.SDKDebugLogsLevel = level;
+}
+
 RCT_EXPORT_METHOD(invoke) {
     [IBGBugReporting invoke];
 }
@@ -712,7 +716,12 @@ RCT_EXPORT_METHOD(isRunningLive:(RCTResponseSenderBlock)callback) {
               @"welcomeMessageBetaFinishStepTitle": @(IBGBetaWelcomeMessageFinishStepTitle),
               @"welcomeMessageBetaFinishStepContent": @(IBGBetaWelcomeMessageFinishStepContent),
               @"welcomeMessageLiveWelcomeStepTitle": @(IBGLiveWelcomeMessageTitle),
-              @"welcomeMessageLiveWelcomeStepContent": @(IBGLiveWelcomeMessageMessage)
+              @"welcomeMessageLiveWelcomeStepContent": @(IBGLiveWelcomeMessageMessage),
+              
+              @"debugLogLevelVerbose": @(IBGSDKDebugLogsLevelVerbose),
+              @"debugLogLevelDebug": @(IBGSDKDebugLogsLevelDebug),
+              @"debugLogLevelError": @(IBGSDKDebugLogsLevelError),
+              @"debugLogLevelNone": @(IBGSDKDebugLogsLevelNone)
               };
 };
 
