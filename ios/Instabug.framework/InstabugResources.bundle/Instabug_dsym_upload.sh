@@ -1,3 +1,4 @@
+#!/bin/bash
 # Copyright 2014 Instabug, Inc. All rights reserved.
 #
 # Usage:
@@ -49,10 +50,19 @@ fi
 echo "Instabug: found APP_TOKEN=${APP_TOKEN}"
 
 # Check internet connection
-if [ "`curl -s https://api.instabug.com | grep status | grep -c OK`" != "1" ]; then
-  echo "ERROR connecting to api.instabug.com."
-  exit 0
+set -x
+
+CURL_RESPONSE=$(curl 'https://api.instabug.com')
+
+if [[ $CURL_RESPONSE != *"OK"* ]]; then
+    echo "ERROR connecting to api.instabug.com."
+    echo "${CURL_RESPONSE}"
+    exit 0
+else
+  echo SUCCESS
 fi
+
+set +x
 
 # Create temp directory if not exists
 CURRENT_USER=$(whoami| tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]')
@@ -126,7 +136,7 @@ echo "Instabug: Compressing dSYM file..."
 # Upload dSYM
 echo "Instabug: Uploading dSYM file..."
 ENDPOINT="https://api.instabug.com/api/sdk/v3/symbols_files"
-STATUS=$(curl "${ENDPOINT}" --write-out %{http_code} --silent --output /dev/null -F symbols_file=@"${DSYM_PATH_ZIP}" -F application_token="${APP_TOKEN}")
+STATUS=$(curl "${ENDPOINT}" --write-out %{http_code} --silent --output /dev/null -F os=iOS -F symbols_file=@"${DSYM_PATH_ZIP}" -F application_token="${APP_TOKEN}")
 if [ $STATUS -ne 200 ]; then
   echo "Instabug: err: dSYM archive not succesfully uploaded."
   echo "Instabug: deleting temporary dSYM archive..."

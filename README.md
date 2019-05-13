@@ -17,27 +17,74 @@ For more info, visit [Instabug.com](https://www.instabug.com).
 
 ## Installation
 
-1. Open the terminal and navigate to your React Native Directory. Then run the following command.
+### Using react-native CLI
+
+1. In Terminal, navigate to your React Native directory and install the `instabug-reactnative` package:
 
 ```bash
 npm install instabug-reactnative
 ```
-or
+
+Or if you prefer to use Yarn instead of npm:
 
 ```bash
 yarn add instabug-reactnative
 ```
 
-2. Install [**Ruby**](https://www.ruby-lang.org/en/documentation/installation/). (You can skip this step if you're building for Android only)
+2. For projects that build for iOS, install `xcodeproj` gem:
 
-3. Install `xcodeproj` gem by running the following command. (You can also skip this step if you're building for Android only)
 ```bash
 gem install xcodeproj
 ```
 
-4. Link the bridging files in the npm package to the ios project use the following command.
+3. Finally, link the bridging files in the `instabug-reactnative` package:
+
+
 ```bash
 react-native link instabug-reactnative
+```
+
+### Using CocoaPods (iOS only)
+
+Alternatively, for iOS you can use [CocoaPods](https://cocoapods.org/) for managing dependencies. 
+
+1. In Terminal, navigate to your React Native directory and install the `instabug-reactnative` package:
+
+```bash
+npm install instabug-reactnative
+```
+
+2. Add the following to your `Podfile`:
+
+```ruby
+pod 'instabug-reactnative', :path => '../node_modules/instabug-reactnative'
+pod 'React', :path => '../node_modules/react-native', :subspecs => [
+  'Core',
+  'CxxBridge',
+  'DevSupport'
+]
+
+# Required React native dependencies
+pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/GLog.podspec'
+pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+
+# To make sure that archiving works correctly in Xcode, React has to be 
+# removed from the Pods project as it's already included in the main project.
+post_install do |installer|
+   installer.pods_project.targets.each do |target|
+      if target.name == "React"
+         target.remove_from_project
+      end
+   end
+end
+```
+
+3. Install `instabug-reactnative`:
+
+```bash
+pod install
 ```
 
 ## Using Instabug
@@ -92,9 +139,9 @@ pod install
 react-native link instabug-reactnative
 ```
 
-### Upgrading from 8.0.3 to 8.x
+### Upgrading the SDK
 
-When upgrading from 8.0.3 to 8.x, please make sure you do the following steps:
+When doing an upgrade in these two cases, from 8.0.3 to 8.x or from an older version than 8.2.6 to 8.2.6 or higher, please make sure you do the following steps:
 
 1. Unlink the project before upgrading to the new version
 ```bash
@@ -126,6 +173,41 @@ If your app doesn’t already access the microphone or photo library, we recomme
 * "`<app name>` needs access to your photo library for you to be able to attach images."
 
 **The permission alert for accessing the microphone/photo library will NOT appear unless users attempt to attach a voice note/photo while using Instabug.**
+
+
+## Auto Uploading Source Map Files
+
+For your app crashes to show up with a fully symbolicated stack trace, we will automatically generate the source map files and upload them to your dashboard on release build. To do so, we rely on your app token being explicitly added to `Instabug.startWithToken('YOUR_APP_TOKEN')` in JavaScript. 
+
+If your app token is defined as a constant or you have different tokens for both iOS and Android apps, set the token as shown below.
+
+1. In Android, go to the `build.gradle` file of the library and you will find below code, replace `YOUR_APP_TOKEN` with your app token from the dashboard.
+
+```java
+task upload_sourcemap(type: Exec) {
+    environment "INSTABUG_APP_TOKEN", "YOUR_APP_TOKEN"
+    commandLine 'sh', './upload_sourcemap.sh'
+}
+```
+
+2. In iOS, go to the build phases of the project, you will find a build phase called `Upload Sourcemap`. Expand it you will find below lines of code, replace `YOUR_APP_TOKEN` with your token from the dashboard.
+
+```bash
+export INSTABUG_APP_TOKEN="YOUR_APP_TOKEN"
+bash "../node_modules/instabug-reactnative/ios/upload_sourcemap.sh"
+```
+
+## Network Logging
+
+Instabug network logging is enabled by default. It intercepts any requests performed with `fetch` or `XMLHttpRequest` and attaches them to the report that will be sent to the dashboard. To disable network logs:
+
+```javascript
+import { NetworkLogger } from 'instabug-reactnative';
+```
+
+```javascript
+NetworkLogger.setEnabled(false);
+```
 
 ## Documentation
 
