@@ -118,6 +118,13 @@ RCT_ENUM_CONVERTER(IBGAction, (@{
                                     @"addCommentToFeature": @(IBGActionAddCommentToFeature)
                                   }), IBGActionAllActions, integerValue);
 
+RCT_ENUM_CONVERTER(IBGSDKDebugLogsLevel, (@{
+                                                @"debugLogLevelVerbose": @(IBGSDKDebugLogsLevelVerbose),
+                                                @"debugLogLevelDebug": @(IBGSDKDebugLogsLevelDebug),
+                                                @"debugLogLevelError": @(IBGSDKDebugLogsLevelError),
+                                                @"debugLogLevelNone": @(IBGSDKDebugLogsLevelNone)
+                                                }), IBGSDKDebugLogsLevelNone, integerValue);
+
 RCT_ENUM_CONVERTER(IBGBugReportingReportType, (@{
                                  @"bugReportingReportTypeBug": @(IBGBugReportingReportTypeBug),
                                  @"bugReportingReportTypeFeedback": @(IBGBugReportingReportTypeFeedback)

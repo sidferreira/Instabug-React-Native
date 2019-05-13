@@ -625,6 +625,16 @@ const InstabugModule = {
   },
 
   /**
+   * Sets which types of debug logs should be logged.
+   * @param {debugLogLevel} debugLogLevel enum debugLogLevel
+   */
+  setDebugLogsLevel: function(debugLogLevel) {
+    if (Platform.OS === 'ios') {
+      Instabug.setDebugLogsLevel(debugLogLevel);
+    }
+  },
+
+  /**
    * Enables all Instabug functionality
    * It works on android only
    */
@@ -980,6 +990,18 @@ const InstabugModule = {
     reportBug: Instabug.reportBugAction,
     requestNewFeature: Instabug.requestNewFeature,
     addCommentToFeature: Instabug.addCommentToFeature
+  },
+
+  /**
+   * Instabug debug log levels.
+   * @readonly
+   * @enum {number}
+   */
+  debugLogLevel: {
+    debug: Instabug.debugLogLevelDebug,
+    verbose: Instabug.debugLogLevelVerbose,
+    error: Instabug.debugLogLevelError,
+    none: Instabug.debugLogLevelNone
   },
 
   /**

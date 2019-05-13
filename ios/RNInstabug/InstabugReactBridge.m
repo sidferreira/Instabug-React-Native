@@ -76,6 +76,10 @@ RCT_EXPORT_METHOD(callPrivateApi:(NSString *)apiName apiParam: (NSString *) para
     }
 }
 
+RCT_EXPORT_METHOD(setDebugLogsLevel: (IBGSDKDebugLogsLevel) level) {
+    Instabug.SDKDebugLogsLevel = level;
+}
+
 RCT_EXPORT_METHOD(invoke) {
     [IBGBugReporting invoke];
 }
@@ -845,7 +849,12 @@ RCT_EXPORT_METHOD(setOnNewReplyReceivedCallback:(RCTResponseSenderBlock) callbac
               @"surveysCustomThanksSubtitle": kIBGCustomSurveyThankYouDescriptionText,
               
               @"surveysStoreRatingThanksTitle": kIBGStoreRatingThankYouTitleText,
-              @"surveysStoreRatingThanksSubtitle": kIBGStoreRatingThankYouDescriptionText
+              @"surveysStoreRatingThanksSubtitle": kIBGStoreRatingThankYouDescriptionText,
+             
+              @"debugLogLevelVerbose": @(IBGSDKDebugLogsLevelVerbose),
+              @"debugLogLevelDebug": @(IBGSDKDebugLogsLevelDebug),
+              @"debugLogLevelError": @(IBGSDKDebugLogsLevelError),
+              @"debugLogLevelNone": @(IBGSDKDebugLogsLevelNone)
               
               };
 };
