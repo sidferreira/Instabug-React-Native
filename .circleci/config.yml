@@ -251,7 +251,6 @@ workflows:
       - test_sample
       - test_android
       - test_ios
-      - windows_android_test
       - hold:
           requires:
             - test_module
