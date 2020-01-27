@@ -3,19 +3,19 @@ import {
   Platform,
   findNodeHandle,
   processColor
-} from 'react-native';
+} from "react-native";
 let { Instabug } = NativeModules;
-import IBGEventEmitter from './utils/IBGEventEmitter';
-import InstabugUtils from './utils/InstabugUtils';
-import InstabugConstants from './utils/InstabugConstants';
-import Report from './models/Report';
-import BugReporting from './modules/BugReporting';
-import Surveys from './modules/Surveys';
-import FeatureRequests from './modules/FeatureRequests';
-import Chats from './modules/Chats';
-import Replies from './modules/Replies';
-import CrashReporting from './modules/CrashReporting';
-import NetworkLogger from './modules/NetworkLogger';
+import IBGEventEmitter from "./utils/IBGEventEmitter";
+import InstabugUtils from "./utils/InstabugUtils";
+import InstabugConstants from "./utils/InstabugConstants";
+import Report from "./models/Report";
+import BugReporting from "./modules/BugReporting";
+import Surveys from "./modules/Surveys";
+import FeatureRequests from "./modules/FeatureRequests";
+import Chats from "./modules/Chats";
+import Replies from "./modules/Replies";
+import CrashReporting from "./modules/CrashReporting";
+import NetworkLogger from "./modules/NetworkLogger";
 
 InstabugUtils.captureJsErrors();
 NetworkLogger.setEnabled(true);
@@ -25,7 +25,6 @@ NetworkLogger.setEnabled(true);
  * @exports Instabug
  */
 const InstabugModule = {
-
   /* istanbul ignore next */
   /**
    * @deprecated use {@link Instabug.start}
@@ -53,7 +52,7 @@ const InstabugModule = {
    * the SDK's UI.
    */
   start: function(token, invocationEvent) {
-    if (Platform.OS === 'ios') Instabug.startWithToken(token, invocationEvent);
+    if (Platform.OS === "ios") Instabug.startWithToken(token, invocationEvent);
   },
 
   /**
@@ -100,7 +99,7 @@ const InstabugModule = {
    * to being enabled or disabled.
    */
   setTrackUserSteps(isEnabled) {
-    if (Platform.OS === 'ios') Instabug.setTrackUserSteps(isEnabled);
+    if (Platform.OS === "ios") Instabug.setTrackUserSteps(isEnabled);
   },
 
   /**
@@ -109,7 +108,7 @@ const InstabugModule = {
    *                  Xcode's console is enabled or not.
    */
   setIBGLogPrintsToConsole(printsToConsole) {
-    if (Platform.OS === 'ios')
+    if (Platform.OS === "ios")
       Instabug.setIBGLogPrintsToConsole(printsToConsole);
   },
 
@@ -166,7 +165,7 @@ const InstabugModule = {
    * notifications are enabled or disabled.
    */
   setPushNotificationsEnabled(isPushNotificationEnabled) {
-      Replies.setPushNotificationsEnabled(isPushNotificationEnabled);
+    Replies.setPushNotificationsEnabled(isPushNotificationEnabled);
   },
 
   /* istanbul ignore next */
@@ -197,7 +196,7 @@ const InstabugModule = {
    * floating button.
    */
   setFloatingButtonEdge(floatingButtonEdge, offsetFromTop) {
-      BugReporting.setFloatingButtonEdge(floatingButtonEdge, offsetFromTop); 
+    BugReporting.setFloatingButtonEdge(floatingButtonEdge, offsetFromTop);
   },
 
   /**
@@ -472,8 +471,8 @@ const InstabugModule = {
    * @param value the value
    */
   setUserAttribute(key, value) {
-    if (!key || typeof key !== 'string' || typeof value !== 'string')
-      throw new TypeError('Invalid param, Expected String');
+    if (!key || typeof key !== "string" || typeof value !== "string")
+      throw new TypeError("Invalid param, Expected String");
     Instabug.setUserAttribute(key, value);
   },
 
@@ -494,8 +493,8 @@ const InstabugModule = {
    * @see #setUserAttribute(String, String)
    */
   removeUserAttribute(key) {
-    if (!key || typeof key !== 'string')
-      throw new TypeError('Invalid param, Expected String');
+    if (!key || typeof key !== "string")
+      throw new TypeError("Invalid param, Expected String");
     Instabug.removeUserAttribute(key);
   },
 
@@ -573,7 +572,7 @@ const InstabugModule = {
    * @param isDebugEnabled whether debug logs should be printed or not into LogCat
    */
   setDebugEnabled(isDebugEnabled) {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       Instabug.setDebugEnabled(isDebugEnabled);
     }
   },
@@ -583,7 +582,7 @@ const InstabugModule = {
    * It works on android only
    */
   enable() {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       Instabug.enable();
     }
   },
@@ -593,7 +592,7 @@ const InstabugModule = {
    * It works on android only
    */
   disable() {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       Instabug.disable();
     }
   },
@@ -609,7 +608,7 @@ const InstabugModule = {
    */
 
   setEnableInAppNotificationSound(shouldPlaySound) {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       Instabug.setEnableInAppNotificationSound(shouldPlaySound);
     }
   },
@@ -634,7 +633,7 @@ const InstabugModule = {
    * @param {function} runningLiveCallBack callback with argument as return value 'isLive'
    */
   isRunningLive(runningLiveCallBack) {
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === "ios") {
       Instabug.isRunningLive(runningLiveCallBack);
     }
   },
@@ -690,7 +689,7 @@ const InstabugModule = {
    * @param {string} fileName
    */
   addFileAttachment(filePath, fileName) {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       Instabug.setFileAttachment(filePath, fileName);
     } else {
       Instabug.setFileAttachment(filePath);
@@ -703,7 +702,7 @@ const InstabugModule = {
    */
   setPrivateView(viewRef) {
     const nativeTag = findNodeHandle(viewRef);
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === "ios") {
       Instabug.hideView(nativeTag);
     } else {
       Instabug.hideView([nativeTag]);
@@ -723,39 +722,85 @@ const InstabugModule = {
       InstabugUtils.setOnReportHandler(false);
     }
     // send bug report
-    IBGEventEmitter.addListener(Instabug, InstabugConstants.PRESENDING_HANDLER, (report) => {
-      const { tags, consoleLogs, instabugLogs, userAttributes, fileAttachments } = report;
-      const reportObj = new Report(tags, consoleLogs, instabugLogs, userAttributes, fileAttachments);
-      preSendingHandler(reportObj);
-      Instabug.submitReport();
-
-    });
+    IBGEventEmitter.addListener(
+      Instabug,
+      InstabugConstants.PRESENDING_HANDLER,
+      report => {
+        const {
+          tags,
+          consoleLogs,
+          instabugLogs,
+          userAttributes,
+          fileAttachments
+        } = report;
+        const reportObj = new Report(
+          tags,
+          consoleLogs,
+          instabugLogs,
+          userAttributes,
+          fileAttachments
+        );
+        preSendingHandler(reportObj);
+        Instabug.submitReport();
+      }
+    );
 
     // handled js crash
-    if (Platform.OS === 'android') {
-      IBGEventEmitter.addListener(Instabug, InstabugConstants.SEND_HANDLED_CRASH, async jsonObject => {
+    if (Platform.OS === "android") {
+      IBGEventEmitter.addListener(
+        Instabug,
+        InstabugConstants.SEND_HANDLED_CRASH,
+        async jsonObject => {
           try {
             let report = await Instabug.getReport();
-            const { tags, consoleLogs, instabugLogs, userAttributes, fileAttachments } = report;
-            const reportObj = new Report(tags, consoleLogs, instabugLogs, userAttributes, fileAttachments);
+            const {
+              tags,
+              consoleLogs,
+              instabugLogs,
+              userAttributes,
+              fileAttachments
+            } = report;
+            const reportObj = new Report(
+              tags,
+              consoleLogs,
+              instabugLogs,
+              userAttributes,
+              fileAttachments
+            );
             preSendingHandler(reportObj);
             Instabug.sendHandledJSCrash(JSON.stringify(jsonObject));
           } catch (e) {
             console.error(e);
           }
-      });
+        }
+      );
     }
 
-    if (Platform.OS === 'android') {
-      IBGEventEmitter.addListener(Instabug, InstabugConstants.SEND_UNHANDLED_CRASH, async (jsonObject) => {
-        
+    if (Platform.OS === "android") {
+      IBGEventEmitter.addListener(
+        Instabug,
+        InstabugConstants.SEND_UNHANDLED_CRASH,
+        async jsonObject => {
           let report = await Instabug.getReport();
-          const { tags, consoleLogs, instabugLogs, userAttributes, fileAttachments } = report;
-          const reportObj = new Report(tags, consoleLogs, instabugLogs, userAttributes, fileAttachments);
+          const {
+            tags,
+            consoleLogs,
+            instabugLogs,
+            userAttributes,
+            fileAttachments
+          } = report;
+          const reportObj = new Report(
+            tags,
+            consoleLogs,
+            instabugLogs,
+            userAttributes,
+            fileAttachments
+          );
           preSendingHandler(reportObj);
           Instabug.sendJSCrash(JSON.stringify(jsonObject));
-      });
-    } 
+        }
+      );
+    }
 
     Instabug.setPreSendingHandler(preSendingHandler);
   },
@@ -981,9 +1026,10 @@ const InstabugModule = {
     reportBugDescription: Instabug.reportBugDescription,
     reportFeedbackDescription: Instabug.reportFeedbackDescription,
     reportQuestionDescription: Instabug.reportQuestionDescription,
-    requestFeatureDescription: Instabug.requestFeatureDescription
-  },
-
+    requestFeatureDescription: Instabug.requestFeatureDescription,
+    repliesNotificationDismissButton: Instabug.repliesNotificationDismissButton,
+    repliesNotificationReplyButton: Instabug.repliesNotificationReplyButton
+  }
 };
 
 export {

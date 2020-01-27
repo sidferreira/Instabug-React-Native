@@ -196,6 +196,8 @@ final class ArgsRegistry {
         args.put("betaWelcomeMessageFinishStepContent", InstabugCustomTextPlaceHolder.Key.BETA_WELCOME_MESSAGE_FINISH_STEP_CONTENT);
         args.put("liveWelcomeMessageTitle", InstabugCustomTextPlaceHolder.Key.LIVE_WELCOME_MESSAGE_TITLE);
         args.put("liveWelcomeMessageContent", InstabugCustomTextPlaceHolder.Key.LIVE_WELCOME_MESSAGE_CONTENT);
+        args.put("repliesNotificationDismissButton", InstabugCustomTextPlaceHolder.Key.REPLIES_NOTIFICATION_DISMISS_BUTTON);
+        args.put("repliesNotificationReplyButton", InstabugCustomTextPlaceHolder.Key.REPLIES_NOTIFICATION_REPLY_BUTTON);
     }
 
     static void registerInstabugReportTypesArgs(Map<String, Object> args) {

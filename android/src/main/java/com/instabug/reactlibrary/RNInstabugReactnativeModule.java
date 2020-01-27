@@ -219,6 +219,9 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
     private final String REPORT_QUESTION_DESCRIPTION = "reportQuestionDescription";
     private final String REQUEST_FEATURE_DESCRIPTION = "requestFeatureDescription";
 
+    private final String REPLIES_NOTIFICATION_DISMISS_BUTTON = "repliesNotificationDismissButton";
+    private final String REPLIES_NOTIFICATION_REPLY_BUTTON = "repliesNotificationReplyButton";
+    
     private Application androidApplication;
     private Instabug mInstabug;
     private InstabugInvocationEvent invocationEvent;
@@ -2327,6 +2330,10 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
                 return InstabugCustomTextPlaceHolder.Key.REPORT_QUESTION_DESCRIPTION;
             case REQUEST_FEATURE_DESCRIPTION:
                 return InstabugCustomTextPlaceHolder.Key.REQUEST_FEATURE_DESCRIPTION;
+            case REPLIES_NOTIFICATION_DISMISS_BUTTON:
+                return InstabugCustomTextPlaceHolder.Key.REPLIES_NOTIFICATION_DISMISS_BUTTON;
+            case REPLIES_NOTIFICATION_REPLY_BUTTON:
+                return InstabugCustomTextPlaceHolder.Key.REPLIES_NOTIFICATION_REPLY_BUTTON;
             default:
                 return null;
         }
@@ -2492,6 +2499,9 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
         constants.put(REPORT_FEEDBACK_DESCRIPTION, REPORT_FEEDBACK_DESCRIPTION);
         constants.put(REPORT_QUESTION_DESCRIPTION, REPORT_QUESTION_DESCRIPTION);
         constants.put(REQUEST_FEATURE_DESCRIPTION, REQUEST_FEATURE_DESCRIPTION);
+
+        constants.put("repliesNotificationDismissButton", REPLIES_NOTIFICATION_DISMISS_BUTTON);
+        constants.put("repliesNotificationReplyButton", REPLIES_NOTIFICATION_REPLY_BUTTON);
 
         return constants;
     }

@@ -528,6 +528,9 @@ RCT_EXPORT_METHOD(show) {
               @"reportFeedbackDescription": kIBGReportFeedbackDescriptionStringName,
               @"reportQuestionDescription": kIBGReportQuestionDescriptionStringName,
               @"requestFeatureDescription": kIBGRequestFeatureDescriptionStringName
+
+              @"repliesNotificationDismissButton": kIBGReplyButtonTitleStringName,
+              @"repliesNotificationReplyButton": kIBDismissButtonTitleStringName
               
               };
 };
