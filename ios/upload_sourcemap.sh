@@ -1,6 +1,10 @@
 #!/bin/sh
+echo "Testing react-native PATH, outside project:"
+react-native --version
 cd ${PROJECT_DIR}
 cd ..
+echo "Testing react-native PATH, inside project:"
+react-native --version
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
 . "$HOME/.nvm/nvm.sh"
 elif [[ -x "$(command -v brew)" && -s "$(brew --prefix nvm)/nvm.sh" ]]; then
