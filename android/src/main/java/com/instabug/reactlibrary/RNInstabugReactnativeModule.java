@@ -2191,27 +2191,35 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void hideView(final ReadableArray ids) {
-        MainThreadHandler.runOnMainThread(new Runnable() {
-            @Override
-            public void run() {
-                UIManagerModule uiManagerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
-                uiManagerModule.prependUIBlock(new UIBlock() {
-                    @Override
-                    public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                        final View[] arrayOfViews = new View[ids.size()];
-                        for (int i = 0; i < ids.size(); i++) {
-                            int viewId = (int) ids.getDouble(i);
-                            try {
-                                arrayOfViews[i] = nativeViewHierarchyManager.resolveView(viewId);
-                            } catch(Exception e) {
-                                e.printStackTrace();
+        try {
+            MainThreadHandler.runOnMainThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        UIManagerModule uiManagerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
+                        uiManagerModule.prependUIBlock(new UIBlock() {
+                            @Override
+                            public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
+                                try {
+                                    final View[] arrayOfViews = new View[ids.size()];
+                                    for (int i = 0; i < ids.size(); i++) {
+                                        int viewId = (int) ids.getDouble(i);
+                                        arrayOfViews[i] = nativeViewHierarchyManager.resolveView(viewId);
+                                    }
+                                    Instabug.setViewsAsPrivate(arrayOfViews);
+                                } catch(Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                        Instabug.setViewsAsPrivate(arrayOfViews);
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
-            }
-        });
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
