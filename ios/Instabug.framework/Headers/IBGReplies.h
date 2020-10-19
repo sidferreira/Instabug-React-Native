@@ -3,9 +3,9 @@
  
  Contains:   API for using Instabug's SDK.
  
- Copyright:  (c) 2013-2019 by Instabug, Inc., all rights reserved.
- 
- Version:    9.1.7
+ Copyright:  (c) 2013-2020 by Instabug, Inc., all rights reserved.
+
+ Version:    10.0.2
  */
 
 #import <Foundation/Foundation.h>
@@ -91,5 +91,11 @@ NS_SWIFT_NAME(Replies)
  */
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
+/**
+ @brief Use this method to mark dismissed messages as read..
+ 
+ @discussion You should call this method after StartWithToken to mark dismissed messages by user as read.
+  */
++ (void)markDismissedMessageAsRead;
 
 @end
