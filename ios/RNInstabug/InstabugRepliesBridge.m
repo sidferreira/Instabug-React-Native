@@ -69,6 +69,10 @@ RCT_EXPORT_METHOD(setPushNotificationsEnabled:(BOOL)isPushNotificationEnabled) {
     [IBGReplies setPushNotificationsEnabled:isPushNotificationEnabled];
 }
 
+RCT_EXPORT_METHOD(markDismissedMessageAsRead) {
+    [IBGReplies markDismissedMessageAsRead];
+}
+
 @synthesize description;
 
 @synthesize hash;

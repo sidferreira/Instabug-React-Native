@@ -6,7 +6,6 @@
 //  Copyright © 2019 instabug. All rights reserved.
 //
 
-
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
@@ -19,13 +18,13 @@
  +------------------------------------------------------------------------+
  */
 
-- (void)setEnabled:(BOOL) isEnabled;
+- (void)setEnabled:(BOOL)isEnabled;
 
-- (void)hasChats:(RCTResponseSenderBlock) callback;
+- (void)hasChats:(RCTResponseSenderBlock)callback;
 
 - (void)show;
 
-- (void)setOnNewReplyReceivedHandler:(RCTResponseSenderBlock) callback;
+- (void)setOnNewReplyReceivedHandler:(RCTResponseSenderBlock)callback;
 
 - (void)getUnreadRepliesCount:(RCTResponseSenderBlock)callBack;
 
@@ -33,8 +32,6 @@
 
 - (void)setPushNotificationsEnabled:(BOOL)isPushNotificationEnabled;
 
-
+- (void)markDismissedMessageAsRead;
 
 @end
-
-

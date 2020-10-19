@@ -98,5 +98,14 @@ export default {
   setPushNotificationsEnabled(isPushNotificationEnabled) {
     if (Platform.OS === 'ios')
       IBGReplies.setPushNotificationsEnabled(isPushNotificationEnabled);
+  },
+
+  /**
+   * Use this method to mark dismissed messages as read..
+   * You should call this method after StartWithToken to mark dismissed messages by user as read.
+   */
+  markDismissedMessageAsReadIOS() {
+    if (Platform.OS === 'ios')
+      IBGReplies.markDismissedMessageAsRead();
   }
 };

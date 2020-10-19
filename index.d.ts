@@ -95,6 +95,7 @@ export namespace Replies {
     inAppNotificationsEnabled: boolean
   ): void;
   function setInAppNotificationSound(shouldPlaySound: boolean): void;
+  function markDismissedMessageAsReadIOS(): void;
 }
 export namespace Surveys {
   function setEnabled(isEnabled: boolean): void;

@@ -94,6 +94,14 @@
   OCMVerify([mock setPushNotificationsEnabled:isPushNotificationEnabled]);
 }
 
+- (void) testgiven$markDismissedMessageAsRead_whenQuery_thenShouldCallNativeApi {
+  id mock = OCMClassMock([IBGReplies class]);
+
+  OCMStub([mock markDismissedMessageAsRead]);
+  [self.instabugBridge markDismissedMessageAsRead];
+  OCMVerify([mock markDismissedMessageAsRead]);
+}
+
 
 @end
 

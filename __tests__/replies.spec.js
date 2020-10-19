@@ -21,6 +21,7 @@ describe('Replies Module', () => {
   const setChatNotificationEnabled = sinon.spy(NativeModules.IBGReplies, 'setInAppNotificationEnabled');
   const setEnableInAppNotificationSound = sinon.spy(NativeModules.IBGReplies, 'setInAppNotificationSound');
   const setPushNotificationsEnabled = sinon.spy(NativeModules.IBGReplies, 'setPushNotificationsEnabled');
+  const markDismissedMessageAsRead = sinon.spy(NativeModules.IBGReplies, 'markDismissedMessageAsRead');
 
   beforeEach(() => {
     setOnNewReplyReceivedCallback.resetHistory();
@@ -131,6 +132,24 @@ describe('Replies Module', () => {
     Replies.setPushNotificationsEnabled(true);
 
     expect(setPushNotificationsEnabled.notCalled).toBe(true);
+
+  });
+
+  it('should call the native method markDismissedMessageAsRead on iOS', () => {
+
+    Platform.OS = 'ios';
+    Replies.markDismissedMessageAsReadIOS();
+
+    expect(markDismissedMessageAsRead.calledOnce).toBe(true);
+
+  });
+
+  it('should not call the native method markDismissedMessageAsRead on Android', () => {
+
+    Platform.OS = 'android';
+    Replies.markDismissedMessageAsReadIOS();
+
+    expect(markDismissedMessageAsRead.calledOnce).toBe(true);
 
   });
 
