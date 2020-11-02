@@ -38,9 +38,10 @@ export default class App extends Component<{}> {
       colorTheme: 'Light',
     };
 
-    Instabug.startWithToken('068ba9a8c3615035e163dc5f829c73be', [
+    Instabug.startWithToken('YOUR_TOKEN', [
       Instabug.invocationEvent.floatingButton,
     ]);
+    Instabug.setWelcomeMessageMode(Instabug.welcomeMessageMode.disabled);
   }
 
   render() {
@@ -52,8 +53,8 @@ export default class App extends Component<{}> {
             different options for customizing the SDK and how easy it is to integrate it to your
             existing app
           </Text>
-          <TouchableOpacity style={styles.button} onPress={() => this.invoke()}>
-            <Text style={styles.text}> INVOKE </Text>
+          <TouchableOpacity style={styles.button} onPress={() => this.showWelcomeMessage()}>
+            <Text style={styles.text}> SHOW WELCOME MESSAGE </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={() => this.sendBugReport()}>
             <Text style={styles.text}> SEND BUG REPORT </Text>
@@ -167,8 +168,8 @@ export default class App extends Component<{}> {
     Instabug.showIntroMessage();
   }
 
-  invoke() {
-    Instabug.show();
+  showWelcomeMessage() {
+    Instabug.showWelcomeMessage(Instabug.welcomeMessageMode.beta);
   }
 
   showMultipleQuestionSurvey() {
@@ -225,7 +226,7 @@ export default class App extends Component<{}> {
     });
   }
 }
-buttonColor = function(myColor) {
+buttonColor = function (myColor) {
   return {
     marginTop: 10,
     padding: 20,
