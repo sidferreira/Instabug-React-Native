@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		133CC8091F578E5C00CF3492 /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 248766451DA3E8ED00D93EDA /* Instabug.framework */; };
+		0CED62D225C0C4DD00D58DDF /* Instabug.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CED62D125C0C4DD00D58DDF /* Instabug.xcframework */; };
 		24DF11FD1DA3A2F30056F77C /* InstabugReactBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF11FA1DA3A2F30056F77C /* InstabugReactBridge.m */; };
 		24DF11FE1DA3A2F30056F77C /* RCTConvert+InstabugEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DF11FC1DA3A2F30056F77C /* RCTConvert+InstabugEnums.m */; };
 		BAD36E1A22F0763A007F5E74 /* InstabugBugReportingBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD36E1922F0763A007F5E74 /* InstabugBugReportingBridge.m */; };
@@ -30,8 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CED62D125C0C4DD00D58DDF /* Instabug.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Instabug.xcframework; sourceTree = "<group>"; };
 		248766441DA3E8ED00D93EDA /* Instabug.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Instabug.bundle; sourceTree = "<group>"; };
-		248766451DA3E8ED00D93EDA /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instabug.framework; sourceTree = "<group>"; };
 		24DF11ED1DA3A2B90056F77C /* libRNInstabug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNInstabug.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DF11F91DA3A2F30056F77C /* InstabugReactBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstabugReactBridge.h; sourceTree = "<group>"; };
 		24DF11FA1DA3A2F30056F77C /* InstabugReactBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstabugReactBridge.m; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				133CC8091F578E5C00CF3492 /* Instabug.framework in Frameworks */,
+				0CED62D225C0C4DD00D58DDF /* Instabug.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				248766441DA3E8ED00D93EDA /* Instabug.bundle */,
-				248766451DA3E8ED00D93EDA /* Instabug.framework */,
+				0CED62D125C0C4DD00D58DDF /* Instabug.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -148,6 +148,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 24DF11E41DA3A2B90056F77C;
