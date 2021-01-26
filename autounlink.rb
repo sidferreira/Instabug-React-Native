@@ -12,9 +12,7 @@ project_path = Dir.glob("#{current_path}/ios/*.xcodeproj").first
 file_name = File.basename(project_path, ".xcodeproj")
 project_location = "./ios/#{file_name}.xcodeproj"
 framework_root = '../node_modules/instabug-reactnative/ios'
-framework_name = 'Instabug.framework'
-
-INSTABUG_PHASE_NAME = "Strip Frameworks"
+framework_name = 'Instabug.xcframework'
 
 INSTABUG_UPLOAD_NAME = "Upload Sourcemap"
 
@@ -27,7 +25,7 @@ targets = project.targets.select { |target| (target.is_a? Xcodeproj::Project::Ob
 framework_ref = frameworks_group.files.find { |file_reference| file_reference.path == "#{framework_root}/#{framework_name}"}
 
 # # Remove Instabug's framework from the Frameworks group
-# frameworks_group.children.delete(framework_ref)
+frameworks_group.children.delete(framework_ref)
 
 targets.each do |target|
 	#Delete New Run Script Phase from Build Phases
