@@ -64,11 +64,6 @@ targets.each do |target|
 	target.frameworks_build_phase.add_file_reference(framework_ref)
 	build_file.settings = { 'ATTRIBUTES' => ['CodeSignOnCopy', 'RemoveHeadersOnCopy'] }
 
-
-	#Add New Run Script Phase to Build Phases
-	phase = target.new_shell_script_build_phase(INSTABUG_PHASE_NAME)
-	phase.shell_script = INSTABUG_PHASE_SCRIPT
-
 	#Add New Run Script Phase to Build Phases
 	upload_build_phase = target.new_shell_script_build_phase(INSTABUG_UPLOAD_NAME)
 	upload_build_phase.shell_script = INSTABUG_UPLOAD_SCRIPT
