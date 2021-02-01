@@ -1,3 +1,7 @@
+## v10.0.0 (2021-02-01)
+
+* Introducing Instabug’s new App Performance Monitoring (APM).
+
 ## v9.1.10 (2020-12-02)
 
 * Fixes a crash caused by the network logger when the object passed is too large
