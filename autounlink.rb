@@ -25,7 +25,7 @@ targets = project.targets.select { |target| (target.is_a? Xcodeproj::Project::Ob
 framework_ref = frameworks_group.files.find { |file_reference| file_reference.path == "#{framework_root}/#{framework_name}"}
 
 # # Remove Instabug's framework from the Frameworks group
-frameworks_group.children.delete(framework_ref)
+# frameworks_group.children.delete(framework_ref)
 
 targets.each do |target|
 	#Delete New Run Script Phase from Build Phases
