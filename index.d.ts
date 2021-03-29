@@ -26,6 +26,9 @@ export namespace BugReporting {
   function show(type: reportType, options: option[]): void;
   function setAutoScreenRecordingEnabled(isEnabled: boolean): void;
   function setViewHierarchyEnabled(isEnabled: boolean): void;
+  function setVideoRecordingFloatingButtonPosition(
+    position: BugReporting.position
+  ): void;
   enum invocationEvent {
     none,
     shake,
@@ -54,6 +57,12 @@ export namespace BugReporting {
     emailFieldOptional,
     commentFieldRequired,
     disablePostSendingDialog
+  }
+  enum position {
+    bottomRight,
+    topRight,
+    bottomLeft,
+    topLeft
   }
 }
 export namespace Chats {
