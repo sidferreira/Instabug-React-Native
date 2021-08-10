@@ -58,9 +58,7 @@ const InstabugModule = {
    * the SDK's UI.
    */
   start: function (token, invocationEvent) {
-    if (Platform.OS === 'ios') {
-      Instabug.startWithToken(token, invocationEvent);
-    }
+    Instabug.startWithToken(token, invocationEvent);
     _isFirstScreen = true;
     _currentScreen = firstScreen;
     setTimeout(function () {
