@@ -5,6 +5,8 @@ import {
 let { Instabug, IBGBugReporting } = NativeModules;
 import IBGEventEmitter from '../utils/IBGEventEmitter';
 import InstabugConstants from '../utils/InstabugConstants';
+import InstabugUtils from '../utils/InstabugUtils';
+import Report from '../models/Report';
 
 /**
  * BugReporting
@@ -73,6 +75,55 @@ export default {
     });
     IBGBugReporting.setOnSDKDismissedHandler(handler);
   },
+
+  /**
+   * Sets a block is executed in the background before sending each 
+   * report and could be used for attaching logs and extra data to reports, for example.
+   * @param {function} preSendingHandler - A callback to get executed before sending each 
+   * report
+   */
+  onReportSubmitHandler(preSendingHandler) {
+    if (preSendingHandler) {
+      InstabugUtils.setOnReportHandler(true);
+    } else {
+      InstabugUtils.setOnReportHandler(false);
+    }
+    // send bug report
+    IBGEventEmitter.addListener(Instabug, InstabugConstants.PRESENDING_HANDLER, (report) => {
+      const { tags, consoleLogs, instabugLogs, userAttributes, fileAttachments } = report;
+      const reportObj = new Report(tags, consoleLogs, instabugLogs, userAttributes, fileAttachments);
+      preSendingHandler(reportObj);
+    });
+
+    // handled js crash
+    if (Platform.OS === 'android') {
+      IBGEventEmitter.addListener(Instabug, InstabugConstants.SEND_HANDLED_CRASH, async jsonObject => {
+        try {
+          let report = await Instabug.getReport();
+          const { tags, consoleLogs, instabugLogs, userAttributes, fileAttachments } = report;
+          const reportObj = new Report(tags, consoleLogs, instabugLogs, userAttributes, fileAttachments);
+          preSendingHandler(reportObj);
+          Instabug.sendHandledJSCrash(JSON.stringify(jsonObject));
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    }
+
+    if (Platform.OS === 'android') {
+      IBGEventEmitter.addListener(Instabug, InstabugConstants.SEND_UNHANDLED_CRASH, async (jsonObject) => {
+
+        let report = await Instabug.getReport();
+        const { tags, consoleLogs, instabugLogs, userAttributes, fileAttachments } = report;
+        const reportObj = new Report(tags, consoleLogs, instabugLogs, userAttributes, fileAttachments);
+        preSendingHandler(reportObj);
+        Instabug.sendJSCrash(JSON.stringify(jsonObject));
+      });
+    }
+
+    Instabug.setPreSendingHandler(preSendingHandler);
+  },
+  
 
   /**
    * Sets the threshold value of the shake gesture for iPhone/iPod Touch

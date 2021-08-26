@@ -12,6 +12,9 @@ export namespace BugReporting {
   function onSDKDismissedHandler(
     handler: (dismiss: dismissType, report: reportType) => void
   ): void;
+  function onReportSubmitHandler(
+    preSendingHandler: (presendingHandler: Report) => void
+  ): void;
   function setDidSelectPromptOptionHandler(
     didSelectPromptOptionHandler: () => void
   ): void;
