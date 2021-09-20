@@ -2,6 +2,7 @@
 cd ..
 cd ..
 cd ..
+cd ..
 if [ -s "$HOME/.nvm/nvm.sh" ]; then
 . "$HOME/.nvm/nvm.sh"
 elif [[ -x "$(command -v brew)" && -s "$(brew --prefix nvm)/nvm.sh" ]]; then

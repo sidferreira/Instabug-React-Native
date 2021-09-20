@@ -4,8 +4,8 @@ module.exports = {
       ios: {
         scriptPhases: [
           {
-            name: '[instabug-reactnative] Upload Sourcemap',
-            script: 'bash "../node_modules/instabug-reactnative/ios/upload_sourcemap.sh"',
+            name: `[@instabug/react-native] Upload Sourcemap`,
+            script: `bash "../node_modules/@instabug/react-native/ios/upload_sourcemap.sh"`,
             execution_position: 'after_compile',
           },
         ],
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
     hooks: {
-      postlink: 'node node_modules/instabug-reactnative/link_bridge.js'
+      postlink: `node node_modules/@instabug/react-native/link_bridge.js`
     },
   },
   commands: [
