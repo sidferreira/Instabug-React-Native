@@ -26352,6 +26352,52 @@ __OBJC_CLASS_RO_$_IBGTextViewCell
 /Users/distiller/project/Instabug/InstabugBugReporting/Views/IBGTextViewCell.m
 InstabugBugReporting/Views/IBGTextViewCell.m
 InstabugBugReporting/Views/IBGTextViewCell.h
++[IBGMotionManager sharedManager]
+___33+[IBGMotionManager sharedManager]_block_invoke
+-[IBGMotionManager init]
+-[IBGMotionManager registerNotification]
+-[IBGMotionManager unRegisterNotification]
+-[IBGMotionManager startMonitoring]
+___35-[IBGMotionManager startMonitoring]_block_invoke
+-[IBGMotionManager stopMonitoring]
+-[IBGMotionManager didAccelerate:]
+___34-[IBGMotionManager didAccelerate:]_block_invoke
+-[IBGMotionManager resetFirstLastAcceleration]
+-[IBGMotionManager delegate]
+-[IBGMotionManager setDelegate:]
+-[IBGMotionManager motionManager]
+-[IBGMotionManager setMotionManager:]
+-[IBGMotionManager updatesQueue]
+-[IBGMotionManager setUpdatesQueue:]
+-[IBGMotionManager lastAcceleration]
+-[IBGMotionManager setLastAcceleration:]
+-[IBGMotionManager firstAcceleration]
+-[IBGMotionManager setFirstAcceleration:]
+-[IBGMotionManager excited]
+-[IBGMotionManager setExcited:]
+-[IBGMotionManager isListening]
+-[IBGMotionManager setIsListening:]
+-[IBGMotionManager .cxx_destruct]
+___block_descriptor_40_e8_32s_e41_v24?0"CMAccelerometerData"8"NSError"16l
+__OBJC_$_CLASS_METHODS_IBGMotionManager
+__OBJC_METACLASS_RO_$_IBGMotionManager
+__OBJC_$_INSTANCE_METHODS_IBGMotionManager
+_OBJC_IVAR_$_IBGMotionManager._firstAcceleration
+_OBJC_IVAR_$_IBGMotionManager._excited
+_OBJC_IVAR_$_IBGMotionManager._isListening
+_OBJC_IVAR_$_IBGMotionManager._delegate
+_OBJC_IVAR_$_IBGMotionManager._motionManager
+_OBJC_IVAR_$_IBGMotionManager._updatesQueue
+_OBJC_IVAR_$_IBGMotionManager._lastAcceleration
+__OBJC_$_INSTANCE_VARIABLES_IBGMotionManager
+__OBJC_$_PROP_LIST_IBGMotionManager
+__OBJC_CLASS_RO_$_IBGMotionManager
+/Users/distiller/project/Instabug/InstabugBugReporting/Invocation Events/Helpers/IBGMotionManager.m
+InstabugBugReporting/Invocation Events/Helpers/IBGMotionManager.m
+InstabugBugReporting/Invocation Events/Helpers/IBGMotionManager.h
+__34-[IBGMotionManager didAccelerate:]_block_invoke
+__35-[IBGMotionManager startMonitoring]_block_invoke
+__33+[IBGMotionManager sharedManager]_block_invoke
 -[IBGBugReportingView awakeFromNib]
 -[IBGBugReportingView dealloc]
 -[IBGBugReportingView setupUI]
@@ -27484,47 +27530,32 @@ InstabugBugReporting/Invocation Events/IBGInvocationTwoFingersSwipeLeft.m
 -[IBGInvocationShake initWithDelegate:]
 -[IBGInvocationShake registerMotionEndedSwizzle]
 -[IBGInvocationShake unregisterMotionEndedSwizzle]
--[IBGInvocationShake registerNotification]
--[IBGInvocationShake unRegisterNotification]
--[IBGInvocationShake resetFirstlastAcceleration]
 -[IBGInvocationShake install]
-___29-[IBGInvocationShake install]_block_invoke
 -[IBGInvocationShake refresh]
 -[IBGInvocationShake uninstall]
 -[IBGInvocationShake invoke]
--[IBGInvocationShake didAccelerate:]
-___36-[IBGInvocationShake didAccelerate:]_block_invoke
+-[IBGInvocationShake motionManagerIsExcited:]
 -[IBGInvocationShake ibg_motionEnded:withEvent:]
 -[IBGInvocationShake delegate]
 -[IBGInvocationShake setDelegate:]
 -[IBGInvocationShake isInstalled]
 -[IBGInvocationShake setIsInstalled:]
--[IBGInvocationShake motionManager]
--[IBGInvocationShake setMotionManager:]
--[IBGInvocationShake lastAcceleration]
--[IBGInvocationShake setLastAcceleration:]
--[IBGInvocationShake firstAcceleration]
--[IBGInvocationShake setFirstAcceleration:]
--[IBGInvocationShake excited]
--[IBGInvocationShake setExcited:]
 -[IBGInvocationShake .cxx_destruct]
-___block_descriptor_40_e8_32s_e41_v24?0"CMAccelerometerData"8"NSError"16l
+__OBJC_$_PROTOCOL_REFS_IBGMotionManagerDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_IBGMotionManagerDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_IBGMotionManagerDelegate
+__OBJC_PROTOCOL_$_IBGMotionManagerDelegate
+__OBJC_LABEL_PROTOCOL_$_IBGMotionManagerDelegate
 __OBJC_CLASS_PROTOCOLS_$_IBGInvocationShake
 __OBJC_METACLASS_RO_$_IBGInvocationShake
 __OBJC_$_INSTANCE_METHODS_IBGInvocationShake
 _OBJC_IVAR_$_IBGInvocationShake.isInstalled
-_OBJC_IVAR_$_IBGInvocationShake._firstAcceleration
-_OBJC_IVAR_$_IBGInvocationShake._excited
 _OBJC_IVAR_$_IBGInvocationShake._delegate
-_OBJC_IVAR_$_IBGInvocationShake._motionManager
-_OBJC_IVAR_$_IBGInvocationShake._lastAcceleration
 __OBJC_$_INSTANCE_VARIABLES_IBGInvocationShake
 __OBJC_$_PROP_LIST_IBGInvocationShake
 __OBJC_CLASS_RO_$_IBGInvocationShake
 /Users/distiller/project/Instabug/InstabugBugReporting/Invocation Events/IBGInvocationShake.m
 InstabugBugReporting/Invocation Events/IBGInvocationShake.m
-__36-[IBGInvocationShake didAccelerate:]_block_invoke
-__29-[IBGInvocationShake install]_block_invoke
 -[IBGBugFlowController startBugReportingFlowWithSnapshot:withFadeAnimation:options:isManual:]
 -[IBGBugFlowController startFeedbackSendingFlowWithSnapshot:withFadeAnimation:options:isManual:]
 -[IBGBugFlowController startQuestionSendingFlowWithSnapshot:withFadeAnimation:options:isManual:]
