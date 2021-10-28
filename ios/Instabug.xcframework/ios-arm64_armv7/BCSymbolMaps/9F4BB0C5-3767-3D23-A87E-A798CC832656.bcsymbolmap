@@ -13548,6 +13548,8 @@ ___37+[InstabugScreenCapturer getInstance]_block_invoke
 -[InstabugScreenCapturer takeScreenshotWithAnnotator:shouldUseRenderInContext:lastTouchedPoints:]
 -[InstabugScreenCapturer imageFromCompletionHandler:]
 -[InstabugScreenCapturer takeScreenshotInContext:shouldUseRenderInContext:annotator:lastTouchedPoints:]
+-[InstabugScreenCapturer listSubviewsOfView:inContex:]
+-[InstabugScreenCapturer flipImage:]
 -[InstabugScreenCapturer screenWindows]
 -[InstabugScreenCapturer windowFromTouchEvent:]
 -[InstabugScreenCapturer takeScreenshotOfWindow:windowFrame:inContex:shouldUseRenderInContext:]
@@ -13564,8 +13566,11 @@ ___37+[InstabugScreenCapturer getInstance]_block_invoke
 -[InstabugScreenCapturer windowProvider]
 -[InstabugScreenCapturer setWindowProvider:]
 -[InstabugScreenCapturer .cxx_destruct]
-_OBJC_CLASSLIST_REFERENCES_$_.85
-_OBJC_CLASSLIST_REFERENCES_$_.95
+_OBJC_CLASSLIST_REFERENCES_$_.83
+_OBJC_CLASSLIST_REFERENCES_$_.121
+_OBJC_SELECTOR_REFERENCES_.123
+_OBJC_CLASSLIST_REFERENCES_$_.126
+_OBJC_CLASSLIST_REFERENCES_$_.131
 __OBJC_$_CLASS_METHODS_InstabugScreenCapturer
 __OBJC_METACLASS_RO_$_InstabugScreenCapturer
 __OBJC_$_INSTANCE_METHODS_InstabugScreenCapturer
@@ -14163,7 +14168,6 @@ ___35-[IBGWindowState applicationWindow]_block_invoke
 -[IBGWindowState .cxx_destruct]
 _OBJC_SELECTOR_REFERENCES_.116
 _OBJC_CLASSLIST_REFERENCES_$_.117
-_OBJC_CLASSLIST_REFERENCES_$_.131
 __OBJC_$_CLASS_METHODS_IBGWindowState
 __OBJC_METACLASS_RO_$_IBGWindowState
 __OBJC_$_INSTANCE_METHODS_IBGWindowState
