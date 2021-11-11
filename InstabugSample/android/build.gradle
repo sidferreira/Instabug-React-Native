@@ -40,8 +40,8 @@ allprojects {
 
         google()
         jcenter()
-    	maven {
-      	    url "https://cross-platform-nexus-repo.instabug-db.com/nexus/repository/instabug-cp"
-       	}
+    	
+      	 
+       	
       }
 }
