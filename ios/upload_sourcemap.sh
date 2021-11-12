@@ -57,6 +57,9 @@ else
     --bundle-output ./ios/main.jsbundle \
     --sourcemap-output ./ios-sourcemap.json
     echo "Instabug: Uploading files..."
+    echo "Token used: ${INSTABUG_APP_TOKEN}"
+    echo "App Version: ${VERSION}"
+    echo "Curl used: curl -X POST ‘https://api.instabug.com/api/sdk/v3/symbols_files’ -F 'app_version=\${VERSION}' -F 'symbols_file=@./ios-sourcemap.json'  -F 'application_token=\${INSTABUG_APP_TOKEN}'  -F 'platform=react_native'  -F 'os=ios'"
     #Upload ios sourcemap
     curl -X POST 'https://api.instabug.com/api/sdk/v3/symbols_files' -F "app_version=${VERSION}" -F "symbols_file=@./ios-sourcemap.json"  -F "application_token=${INSTABUG_APP_TOKEN}"  -F "platform=react_native"  -F "os=ios" 
     rm -rf ios-sourcemap.json
