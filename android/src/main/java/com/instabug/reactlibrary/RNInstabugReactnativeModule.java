@@ -670,7 +670,7 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
                 try {
-                    Instabug.setState(InstabugState.ENABLED);
+                    Instabug.enable();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
