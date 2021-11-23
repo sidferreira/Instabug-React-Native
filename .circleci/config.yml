@@ -214,31 +214,5 @@ workflows:
   version: 2
   publish:
     jobs:
-      - danger:
-          context: cross-platform
-      - test_module
-      - test_sample
       - test_android
-      - test_ios
-      - e2e_ios
-      # - e2e_android
-      - hold:
-          requires:
-            - test_module
-            - test_sample
-            - test_android
-            - test_ios
-            - e2e_ios
-            # - e2e_android
-          type: approval
-          filters:
-            branches:
-              only: master
-      - publish:
-          context: cross-platform
-          requires:
-            - hold
-          filters:
-            branches:
-              only: master
 
