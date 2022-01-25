@@ -146,9 +146,9 @@ const XHRInterceptor = {
               ) {
                 cloneNetwork.gqlQueryName =
                   cloneNetwork.requestHeaders[InstabugConstants.GRAPHQL_HEADER];
-                delete cloneNetwork.requestHeaders[
-                  InstabugConstants.GRAPHQL_HEADER
-                ];
+                // delete cloneNetwork.requestHeaders[
+                //   InstabugConstants.GRAPHQL_HEADER
+                // ];
                 if (cloneNetwork.gqlQueryName === 'null') {
                   cloneNetwork.gqlQueryName = '';
                 }
