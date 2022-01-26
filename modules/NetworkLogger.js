@@ -29,11 +29,11 @@ export default {
             );
           } else {
             try {
+              console.log("[Instabug-ReactNative] Native IBGAPM.networkLog called with headers: " + JSON.stringify(network.requestHeaders));
               if (Platform.OS === 'android') {
                 Instabug.networkLog(JSON.stringify(network));
                 IBGAPM.networkLog(JSON.stringify(network));
               } else {
-                console.log("[Instabug-ReactNative] Native IBGAPM.networkLog called with headers: " + JSON.stringify(network.requestHeaders));
                 Instabug.networkLog(network);
               }
             } catch (e) {
