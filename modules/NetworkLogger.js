@@ -33,6 +33,7 @@ export default {
                 Instabug.networkLog(JSON.stringify(network));
                 IBGAPM.networkLog(JSON.stringify(network));
               } else {
+                console.log("[Instabug-ReactNative] Native IBGAPM.networkLog called with headers: " + JSON.stringify(network.requestHeaders));
                 Instabug.networkLog(network);
               }
             } catch (e) {
@@ -94,6 +95,7 @@ export default {
 
   apolloLinkRequestHandler(operation, forward) {
     try {
+      console.log("[Instabug-ReactNative] ApolloLinkRequestHandler with operation: " + JSON.stringify(operation));
       operation.setContext(({ headers = {} }) => {
         headers[InstabugConstants.GRAPHQL_HEADER] = operation.operationName;
         return {headers:headers};

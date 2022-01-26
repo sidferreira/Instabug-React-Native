@@ -146,6 +146,7 @@ const XHRInterceptor = {
               ) {
                 cloneNetwork.gqlQueryName =
                   cloneNetwork.requestHeaders[InstabugConstants.GRAPHQL_HEADER];
+                  console.log("[Instabug-ReactNative] GRAPHQL_HEADER Available for: " + cloneNetwork.url + "\n" + "Network Object: " + JSON.stringify(cloneNetwork));
                 // delete cloneNetwork.requestHeaders[
                 //   InstabugConstants.GRAPHQL_HEADER
                 // ];
@@ -164,6 +165,7 @@ const XHRInterceptor = {
               }
               else
               {
+                console.log("[Instabug-ReactNative] GRAPHQL_HEADER Not Available for: " + cloneNetwork.url + "\n" + "headers: " + JSON.stringify(cloneNetwork.requestHeaders));
                 delete cloneNetwork.gqlQueryName;
               }
 
