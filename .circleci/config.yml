@@ -46,7 +46,7 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-
+      - run: yarn
       - run: cd InstabugSample && yarn install
 
       - run:
