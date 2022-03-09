@@ -26,10 +26,20 @@ android {
     }
 }
 
+rootProject.allprojects {
+	repositories {
+		google()
+		jcenter()
+		maven {
+			url 'https://oss.sonatype.org/content/repositories/snapshots'
+		}
+	}
+}
+
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.facebook.react:react-native:+'
-    api('com.instabug.library:instabug:10.11.0') {
+    api('com.instabug.library:instabug:10.13.0.3790-SNAPSHOT') {
         exclude group: 'com.android.support:appcompat-v7'
     }
     testImplementation "org.mockito:mockito-inline:3.4.0"
