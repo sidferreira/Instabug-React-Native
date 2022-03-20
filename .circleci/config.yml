@@ -156,7 +156,7 @@ jobs:
           name: Install Android SDK
           command: |
             HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
-            HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk
+            HOMEBREW_NO_AUTO_UPDATE=1 brew install android-sdk
       - run:
           name: Accept Android SDK Licenses
           command: (yes | sdkmanager --licenses) || true
