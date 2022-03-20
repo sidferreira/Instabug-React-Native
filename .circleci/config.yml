@@ -187,7 +187,7 @@ jobs:
           command: sudo yarn
       - run:
           name: Generate Android Keystore
-          command: cd android/app && keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=AA, OU=AA, O=AA, L=AA, S=AA, C=EG"
+          command: cd android/app && keytool -delete -alias androiddebugkey && keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=AA, OU=AA, O=AA, L=AA, S=AA, C=EG"
       - run:
           name: Make gradlew Executable
           command: cd android && chmod +x ./gradlew
