@@ -227,6 +227,7 @@ workflows:
       # - test_ios
       # - e2e_ios
       - e2e_android
+            context: cross-platform
       - hold:
           requires:
             # - test_module
