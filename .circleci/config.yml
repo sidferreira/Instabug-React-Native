@@ -158,6 +158,11 @@ jobs:
             HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask
             HOMEBREW_NO_AUTO_UPDATE=1 brew install android-sdk
       - run:
+          name: Install Java 8
+          command: |
+            HOMEBREW_NO_AUTO_UPDATE=1 brew tap AdoptOpenJDK/openjdk
+            HOMEBREW_NO_AUTO_UPDATE=1 brew install adoptopenjdk/openjdk/adoptopenjdk8
+      - run:
           name: Accept Android SDK Licenses
           command: (yes | sdkmanager --licenses) || true
       - run:
