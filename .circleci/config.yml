@@ -201,7 +201,7 @@ jobs:
           name: Detox - Build Release App
           command: |
             sudo chmod -R 777 /Users/distiller/project/InstabugSample/node_modules
-            cd android && ./gradlew cleanBuildCache && cd .. && detox build --configuration android.emu.release && detox build --configuration android.emu.release
+            cd android && ./gradlew cleanBuildCache && cd .. && detox build --configuration android.emu.release
       - run:
           name: Detox - Run E2E Tests
           command: |
