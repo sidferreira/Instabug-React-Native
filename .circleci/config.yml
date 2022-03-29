@@ -224,13 +224,13 @@ workflows:
   version: 2
   publish:
     jobs:
-       - danger:
-           context: cross-platform
-       - test_module
-       - test_sample
-       - test_android
-       - test_ios
-       - e2e_ios
+      - danger:
+          context: cross-platform
+      - test_module
+      - test_sample
+      - test_android
+      - test_ios
+      - e2e_ios
       - e2e_android:
           context: cross-platform
       - hold:
