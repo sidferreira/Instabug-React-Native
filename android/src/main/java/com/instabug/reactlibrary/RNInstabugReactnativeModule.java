@@ -27,8 +27,6 @@ import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.instabug.bug.BugReporting;
 import com.instabug.bug.instabugdisclaimer.Internal;
-import com.instabug.bug.invocation.InvocationMode;
-import com.instabug.bug.invocation.InvocationOption;
 import com.instabug.bug.invocation.Option;
 import com.instabug.chat.Replies;
 import com.instabug.crash.CrashReporting;
@@ -344,7 +342,7 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
             public void run() {
                 try {
                     int durationInMilli = autoScreenRecordingMaxDuration * 1000;
-                    Instabug.setAutoScreenRecordingMaxDuration(durationInMilli);
+                    // Instabug.setAutoScreenRecordingMaxDuration(durationInMilli);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -1816,7 +1814,7 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
                 try {
-                    Surveys.setThresholdForReshowingSurveyAfterDismiss(sessionsCount, daysCount);
+                    // Surveys.setThresholdForReshowingSurveyAfterDismiss(sessionsCount, daysCount);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -2171,7 +2169,7 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
                                 e.printStackTrace();
                             }
                         }
-                        Instabug.setViewsAsPrivate(arrayOfViews);
+                        // Instabug.setViewsAsPrivate(arrayOfViews);
                     }
                 });
             }
@@ -2268,9 +2266,9 @@ public class RNInstabugReactnativeModule extends ReactContextBaseJavaModule {
             case WELCOME_MESSAGE_LIVE_WELCOME_STEP_CONTENT:
                 return InstabugCustomTextPlaceHolder.Key.LIVE_WELCOME_MESSAGE_CONTENT;
             case CUSTOM_SURVEY_THANKS_TITLE:
-                    return InstabugCustomTextPlaceHolder.Key.SURVEYS_CUSTOM_THANKS_TITLE;
+                    // return InstabugCustomTextPlaceHolder.Key.SURVEYS_CUSTOM_THANKS_TITLE;
             case CUSTOM_SURVEY_THANKS_SUBTITLE:
-                    return InstabugCustomTextPlaceHolder.Key.SURVEYS_CUSTOM_THANKS_SUBTITLE;
+                    // return InstabugCustomTextPlaceHolder.Key.SURVEYS_CUSTOM_THANKS_SUBTITLE;
             case STORE_RATING_THANKS_TITLE:
                     return InstabugCustomTextPlaceHolder.Key.SURVEYS_STORE_RATING_THANKS_TITLE;
             case STORE_RATING_THANKS_SUBTITLE:

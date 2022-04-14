@@ -179,7 +179,7 @@ public class RNInstabugSurveysModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
                 try {
-                    Surveys.setThresholdForReshowingSurveyAfterDismiss(sessionsCount, daysCount);
+                    // Surveys.setThresholdForReshowingSurveyAfterDismiss(sessionsCount, daysCount);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
