@@ -5,7 +5,7 @@
 
  Copyright:  (c) 2013-2020 by Instabug, Inc., all rights reserved.
 
- Version:    10.11.9
+ Version:    10.13.1
  */
 
 #import <Foundation/Foundation.h>
@@ -175,6 +175,18 @@ NS_ASSUME_NONNULL_BEGIN
  @param data NSData to be added as a file attachment with each report.
  */
 +(void)addFileAttachmentWithData:(NSData *)data;
+
+/**
+ @brief Add a set of data as a file attachment to be sent with each report.
+ 
+ @discussion The data will be written to a file with the specified name and will be attached with each report.
+ 
+ Each call to this method adds this set of data as a file attachment, until a maximum of 3 then it overrides the first data.
+ 
+ @param data NSData to be added as a file attachment with each report.
+ @param name NSString name of the file including the extension. Allowed format is Alphanumeric and [-_.] as special characters.
+ */
++ (void)addFileAttachmentWithData:(NSData *)data andName:(NSString *)name;
 
 /**
  @brief Clear list of files to be attached with each report.
