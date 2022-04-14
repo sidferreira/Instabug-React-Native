@@ -1,3 +1,7 @@
+## master
+
+* Bumps Instabug iOS SDK to v10.13.1
+
 ## 10.13.0 (2022-03-17)
 
 * Adds Instabug Experiments APIs
