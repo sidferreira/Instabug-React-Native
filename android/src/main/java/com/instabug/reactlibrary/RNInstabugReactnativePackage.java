@@ -25,6 +25,7 @@ import android.graphics.Color;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -79,26 +80,13 @@ public class RNInstabugReactnativePackage implements ReactPackage {
     }
 
     private void parseInvocationEvent(String[] invocationEventValues) {
+        final ArrayList<String> keys = new ArrayList<>(Arrays.asList(invocationEventValues));
+        final ArrayList<InstabugInvocationEvent> events = ArgsRegistry.invocationEvents.getAll(keys);
 
-        for (int i = 0; i < invocationEventValues.length; i++) {
-            if (invocationEventValues[i].equals("button")) {
-                this.invocationEvents.add(InstabugInvocationEvent.FLOATING_BUTTON);
-            } else if (invocationEventValues[i].equals("swipe")) {
-                this.invocationEvents.add(InstabugInvocationEvent.TWO_FINGER_SWIPE_LEFT);
-
-            } else if (invocationEventValues[i].equals("shake")) {
-                this.invocationEvents.add(InstabugInvocationEvent.SHAKE);
-
-            } else if (invocationEventValues[i].equals("screenshot")) {
-                this.invocationEvents.add(InstabugInvocationEvent.SCREENSHOT);
-
-            } else if (invocationEventValues[i].equals("none")) {
-                this.invocationEvents.add(InstabugInvocationEvent.NONE);
-            }
-        }
-
-        if (invocationEvents.isEmpty()) {
+        if (events.isEmpty()) {
             invocationEvents.add(InstabugInvocationEvent.SHAKE);
+        } else {
+            invocationEvents.addAll(events);
         }
     }
 
@@ -151,10 +139,6 @@ public class RNInstabugReactnativePackage implements ReactPackage {
 
 
     public static class Builder {
-        //FloatingButtonEdge
-        private final String FLOATING_BUTTON_EDGE_RIGHT = "right";
-        private final String FLOATING_BUTTON_EDGE_LEFT = "left";
-
         String androidApplicationToken;
         Application application;
         String[] invocationEvents;
@@ -198,18 +182,12 @@ public class RNInstabugReactnativePackage implements ReactPackage {
         }
 
         private InstabugFloatingButtonEdge getFloatingButtonEdge(String floatingButtonEdgeValue) {
-            InstabugFloatingButtonEdge floatingButtonEdge = InstabugFloatingButtonEdge.RIGHT;
             try {
-                if (floatingButtonEdgeValue.equals(FLOATING_BUTTON_EDGE_LEFT)) {
-                    floatingButtonEdge = InstabugFloatingButtonEdge.LEFT;
-                } else if (floatingButtonEdgeValue.equals(FLOATING_BUTTON_EDGE_RIGHT)) {
-                    floatingButtonEdge = InstabugFloatingButtonEdge.RIGHT;
-                }
-                return floatingButtonEdge;
-
+                return ArgsRegistry.floatingButtonEdges
+                        .getOrDefault(floatingButtonEdgeValue, InstabugFloatingButtonEdge.RIGHT);
             } catch(Exception e) {
                 e.printStackTrace();
-                return floatingButtonEdge;
+                return InstabugFloatingButtonEdge.RIGHT;
             }
         }
     }
